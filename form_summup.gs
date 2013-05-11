@@ -3,7 +3,7 @@
  *   new call to copySummup.
  */
 
-var SUMMUP_ID = "0AvIl-R8FUmi5dF9QRC01MXNhZ0xXbXNiaDhHamtWb3c";
+var SUMMUP_ID = "document_key";
 
 function onFormSubmit() {
   copySummup(SUMMUP_ID, 1, 5, [5,4,3,2]);
