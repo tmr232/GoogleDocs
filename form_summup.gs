@@ -17,7 +17,7 @@ function onFormSubmit() {
 *  sortObject - the sorting parameters: [1,3,5,7] (each number is a column to sort by.
 *               the first one is the primary sort, the second is secondary, and so on.)
 */
-function copySummup(docID, firstColumn, numberOfColumns, sortObject) {
+function copySummup(docID, firstColumn, numberOfColumns, sortObject, targetColumn) {
    // Open the current spreadsheet
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheets()[0];
@@ -30,7 +30,8 @@ function copySummup(docID, firstColumn, numberOfColumns, sortObject) {
   var sourceRange = sheet.getRange(1, firstColumn, sheet.getMaxRows(), numberOfColumns);
   
   // Get the range to copy to
-  var destRange = summupSheet.getRange(1, 1, sheet.getMaxRows(), numberOfColumns);
+  targetColumn = targetColumn || 1;
+  var destRange = summupSheet.getRange(1, targetColumn, sheet.getMaxRows(), numberOfColumns);
   
   // Copy the source range to the destination range
   destRange.setValues(sourceRange.getValues());
